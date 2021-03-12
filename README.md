@@ -150,8 +150,8 @@ Load balancing ensures that the application will be highly accessable, in additi
 - Load balancers protect network availability, allowing requests to be shared over different server setups.
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the configuration and system files.
-- 
-- _TODO: What does Metricbeat record?_
+- Filebeat monitors system logs
+- Metricbeat can monitor operating systtem data and service statistic from monitored VMs
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
