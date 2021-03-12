@@ -6,8 +6,9 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-Playbook 1: RedTeam.yml
-  ---
+#### Playbook 1: RedTeam.yml
+```
+---
 - name: Config Web VM with Docker
   hosts: webservers
   become: true
@@ -41,17 +42,10 @@ Playbook 1: RedTeam.yml
     systemd:
       name: docker
       enabled: yes
-
-This document contains the following details:
-- Description of the Topology
-- Access Policies
-- ELK Configuration
-  - Beats in Use
-  - Machines Being Monitored
-- How to Use the Ansible Build
-
-Playbook 2: elk-stack.yml
- ---
+```
+#### Playbook 2: elk-stack.yml
+```
+---
 - name: Configure Elk VM with Docker
   hosts: elk
   become: true
@@ -107,8 +101,9 @@ Playbook 2: elk-stack.yml
       systemd:
         name: docker
         enabled: yes
-
-Playbook 3: filebeat-playbook.yml
+```
+#### Playbook 3: filebeat-playbook.yml
+```
 ---
 -
   name: installing and launching filebeat
@@ -135,8 +130,15 @@ Playbook 3: filebeat-playbook.yml
 
   - name: Start filebeat service
     command: service filebeat start
+```
 
-
+This document contains the following details:
+- Description of the Topology
+- Access Policies
+- ELK Configuration
+  - Beats in Use
+  - Machines Being Monitored
+- How to Use the Ansible Build
 - How to Use the Ansible Build
 
 
@@ -153,7 +155,7 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
-
+```
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
 | Jump Box | Gateway  | 10.0.0.4   | Linux            |
@@ -161,7 +163,7 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 | Web-2    | DVWA     | 10.0.0.6   | Linux            |
 | Web-3    | DVWA     | 10.0.0.7   | Linux            |
 | Elk-Stack| Elk      | 10.1.0.4   | Linux            |
-
+```
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
@@ -173,7 +175,7 @@ Machines within the network can only be accessed by JumpBox.
 - The only machine that can access the Elk VM (Elk-Stack) is the Jump Box (IP: 10.0.0.4)
 
 A summary of the access policies in place can be found in the table below.
-
+```
 | Name     | Publicly Accessible | Allowed IP Addresses   |
 |----------|---------------------|------------------------|
 | Jump Box | Yes: SSH            | 69.242.126.8           |
@@ -181,7 +183,7 @@ A summary of the access policies in place can be found in the table below.
 | Web-2    | Yes: SSH/HTTP       | 10.0.0.4 / 69.242.126.8|
 | Web-3    | Yes: SSH/HTTP       | 10.0.0.4 / 69.242.126.8|
 | Elk-Stack| Yes: SSH/HTTP       | 10.0.0.4 / 69.242.126.8|
-
+```
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
@@ -219,10 +221,11 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
+```
 - Web-1 10.0.0.5
 - Web-2 10.0.0.6
 - Web-3 10.0.0.7
-
+```
 We have installed the following Beats on these machines:
 - Filebeat
 
@@ -235,13 +238,16 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 - Copy the playbook files to Ansible Container.
 - Update the /etc/Ansible/hosts file to include...
-    - [webservers]
+   ```
+   - [webservers]
       10.0.0.4 ansible_python_interpreter=/usr/bin/python3
       10.0.0.5 ansible_python_interpreter=/usr/bin/python3
       10.0.0.6 ansible_python_interpreter=/usr/bin/python3
 
     - [elkservers]
       10.1.0.4 ansible_python_interpreter=/usr/bin/python3
+      ```
+```
 - Run the playbook, and navigate to the terminal to check that the installation worked as expected.
 
 - _Which file is the playbook? Where do you copy it?
@@ -252,3 +258,4 @@ SSH into the control node and follow the steps below:
 
 - _Which URL do you navigate to in order to check that the ELK server is running?
     You would want to navigate to your machines "localhost:5601". In my case I navigate to: http://52.177.220.189:5601
+```
