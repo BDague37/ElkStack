@@ -247,7 +247,7 @@ SSH into the control node and follow the steps below:
     - [elkservers]
       10.1.0.4 ansible_python_interpreter=/usr/bin/python3
       ```
-```
+
 - Run the playbook, and navigate to the terminal to check that the installation worked as expected.
 
 - _Which file is the playbook? Where do you copy it?
@@ -258,4 +258,3 @@ SSH into the control node and follow the steps below:
 
 - _Which URL do you navigate to in order to check that the ELK server is running?
     You would want to navigate to your machines "localhost:5601". In my case I navigate to: http://52.177.220.189:5601
-```
